@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#211039">
+  <title>A Little Universe for Akka ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-background" aria-hidden="true">
+    <div class="nebula nebula-one"></div><div class="nebula nebula-two"></div>
+    <div class="moon-glow">☾</div><div class="star-field" id="starField"></div>
+  </div>
+  <div class="floating-layer" id="floatingLayer" aria-hidden="true"></div>
+  <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+
+  <main>
+    <section class="gate-screen screen" id="gateScreen">
+      <div class="gate-card glass-card">
+        <p class="eyebrow">A SECRET LITTLE UNIVERSE</p>
+        <div class="gate-orbit" aria-hidden="true"><span>✦</span><span>♡</span><span>✧</span></div>
+        <div class="gate-icon" aria-hidden="true">🔮</div>
+        <p class="tiny-label">psst... this is just for you</p>
+        <h1>Something magical<br><em>is waiting, Akka.</em></h1>
+        <p class="body-copy">A tiny world of wishes, stars and love has been made just for you. Enter the secret code to unlock it.</p>
+        <p class="pin-label">YOUR SECRET 4-DIGIT CODE</p>
+        <div class="pin-dots" id="pinDots" aria-label="Four digit passcode">○ ○ ○ ○</div>
+        <div class="keypad" id="keypad" aria-label="Passcode keypad">
+          <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button>
+          <button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button>
+          <button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button>
+          <button type="button" data-action="clear" class="soft-key">⌫</button><button type="button" data-digit="0">0</button><button type="button" data-action="unlock" class="heart-key">♡</button>
+        </div>
+        <p class="pin-error" id="pinError" role="status"></p>
+        <button type="button" class="text-button" id="unlockButton">Unlock my surprise <span>✧</span></button>
+        <p class="hint">Hint: the day and month that make November special ♡</p>
+      </div>
+    </section>
+
+    <section class="celebration hidden" id="celebration">
+      <header class="topbar"><div class="brand">a little universe <span>✦</span></div><button type="button" class="music-button" id="musicButton" aria-pressed="false">♫ <span>Play music</span></button></header>
+
+      <section class="journey-step hero glass-card" data-surprise="The universe has many stars, but there's only one you.">
+        <p class="eyebrow">TONIGHT, THE STARS HAVE A SECRET</p>
+        <div class="hero-constellation" aria-hidden="true"><span>✦</span><span>✧</span><span>☾</span><span>✦</span><span>♡</span></div>
+        <p class="hero-kicker">A little world made with love</p>
+        <h1>Happy Birthday,<br><em>Akka!</em></h1>
+        <p class="hero-copy">If the sky could write a birthday wish, it would fill every star with happiness for you.</p>
+        <div class="hero-art" aria-hidden="true"><span class="art-cloud cloud-left">☁</span><span class="art-moon">☾</span><span class="art-star star-left">✦</span><span class="art-star star-right">✧</span><span class="art-flower">✿</span><span class="art-cloud cloud-right">☁</span></div>
+        <div class="surprise-note"><span>✧ A tiny note from your universe</span><p class="surprise-text"></p></div>
+        <button type="button" class="primary-button" id="startButton">Enter your birthday world <span>→</span></button>
+      </section>
+
+      <section class="journey-step countdown-section glass-card" data-surprise="The calendar has one favourite date: the day you arrived.">
+        <p class="eyebrow">A DATE WRITTEN IN THE STARS</p><h2 id="countdownHeading">Counting down to your day</h2>
+        <p class="muted" id="countdownSub">Every second brings us closer to celebrating you.</p>
+        <div class="countdown-grid">
+          <div><strong id="days">00</strong><span>days</span></div><div><strong id="hours">00</strong><span>hours</span></div>
+          <div><strong id="minutes">00</strong><span>minutes</span></div><div><strong id="seconds">00</strong><span>seconds</span></div>
+        </div>
+        <p class="date-ribbon">14 NOVEMBER 2026 · YOUR SPECIAL DAY</p>
+        <div class="surprise-note"><span>✧ A tiny note from your universe</span><p class="surprise-text"></p></div>
+      </section>
+
+      <section class="journey-step stars-section" data-surprise="You are made of all the little things that make this world brighter.">
+        <div class="section-heading"><p class="eyebrow">A SKY FULL OF LITTLE REMINDERS</p><h2>Tap a star, <em>find a wish</em></h2><p class="muted">Each star is hiding a little message just for you.</p></div>
+        <div class="constellation-board glass-card" id="constellationBoard">
+          <button class="message-star star-one" type="button" data-message="You make ordinary days feel special. ✨" aria-label="Reveal a message">✦</button>
+          <button class="message-star star-two" type="button" data-message="Your smile deserves its own constellation. ♡" aria-label="Reveal a message">✧</button>
+          <button class="message-star star-three" type="button" data-message="You are stronger and more wonderful than you know. 💜" aria-label="Reveal a message">✦</button>
+          <button class="message-star star-four" type="button" data-message="May good things find you wherever you go. 🌷" aria-label="Reveal a message">✧</button>
+          <button class="message-star star-five" type="button" data-message="No matter how big the universe gets, you'll always have a place in my heart. ♡" aria-label="Reveal a message">✦</button>
+          <button class="message-star star-six" type="button" data-message="You deserve happiness that stays, dreams that grow and love that surrounds you. ✨" aria-label="Reveal a message">✧</button>
+          <div class="star-message" id="starMessage" aria-live="polite">Choose any glowing star to reveal its secret message.</div>
+          <div class="constellation-line line-one"></div><div class="constellation-line line-two"></div>
+        </div>
+        <div class="surprise-note"><span>✧ A tiny note from your universe</span><p class="surprise-text"></p></div>
+      </section>
+
+      <section class="journey-step gift-section glass-card" data-surprise="The best gifts are wrapped in love, and this one has plenty.">
+        <p class="eyebrow">A LITTLE SOMETHING, WRAPPED FOR YOU</p><h2>A gift from <em>my heart</em></h2><p class="muted">There is a tiny surprise hiding inside. Tap the gift to unwrap it.</p>
+        <button type="button" class="gift-box" id="giftBox" aria-label="Open your birthday gift">
+          <span class="gift-glow"></span><span class="gift-bow bow-left"></span><span class="gift-bow bow-right"></span>
+          <span class="gift-lid"></span><span class="gift-ribbon"></span><span class="gift-base"></span><span class="gift-sparkle">✦</span>
+        </button>
+        <p class="gift-hint" id="giftHint">Tap to unwrap your surprise 🎁</p>
+        <div class="gift-message hidden" id="giftMessage"><div class="gift-message-icon">💗</div><h3>Your gift is a wish...</h3><p>May every kind thing you give to the world find its way back to you, multiplied. Keep dreaming big, laughing loudly and being wonderfully you.</p><p class="gift-postscript">And remember, your little sister is always cheering for you.</p></div>
+        <div class="surprise-note"><span>✧ A tiny note from your universe</span><p class="surprise-text"></p></div>
+      </section>
+
+      <section class="journey-step letter-section glass-card" data-surprise="Some feelings are too big for everyday conversations, so I put them here for you.">
+        <p class="eyebrow">THINGS I DON'T ALWAYS SAY OUT LOUD</p><h2>A letter from <em>my heart</em></h2>
+        <div class="letter-envelope" id="letterEnvelope"><div class="letter-envelope-flap"></div><div class="letter-seal">♡</div><div class="letter-envelope-front">For my favourite Akka</div></div>
+        <button type="button" class="primary-button" id="openLetterButton">Open your letter <span>♡</span></button>
+        <article class="letter-paper hidden" id="letterPaper">
+          <p class="letter-greeting">My dearest Akka,</p>
+          <p>Happy Birthday to one of the most special people in my life. You are not just my sister; you are a part of so many memories, little laughs and moments I will always carry with me.</p>
+          <p>I may not say it every day, but I am grateful to have you. Thank you for being you, for the little things you do and for making our bond uniquely ours.</p>
+          <p>I hope this year brings you peaceful days, exciting opportunities, good health, confidence and all the happiness your heart can hold. May you never stop dreaming or believing in yourself.</p>
+          <p>Whatever life brings, I will always be wishing the best for you. Keep smiling, keep shining and remember how loved you are.</p>
+          <p class="letter-signature">With endless love,<br><em>Your little sister</em> ♡</p>
+        </article>
+        <div class="surprise-note"><span>✧ A tiny note from your universe</span><p class="surprise-text"></p></div>
+      </section>
+
+      <section class="journey-step cake-section glass-card" data-surprise="Make a wish that is as big and beautiful as the universe.">
+        <p class="eyebrow">THE LAST LITTLE BIT OF MAGIC</p><h2>Make a wish, <em>birthday girl</em></h2><p class="muted">Close your eyes, think of something wonderful and blow out your candles.</p>
+        <div class="cake-scene">
+          <div class="candle-row" id="candleRow"><div class="candle"><span class="flame"></span></div><div class="candle"><span class="flame"></span></div><div class="candle"><span class="flame"></span></div></div>
+          <div class="cake-top"></div><div class="cake-middle"><span class="icing-drip"></span></div><div class="cake-bottom"></div><div class="cake-plate"></div>
+        </div>
+        <p class="wish-text" id="wishText">Your wish is safe with the stars. ✨</p>
+        <button type="button" class="primary-button" id="blowButton">Blow out the candles <span>✧</span></button>
+        <div class="final-message hidden" id="finalMessage"><p class="final-stars">✦　♡　✧</p><h2>Happy Birthday, Akka!</h2><p>May your world always be full of magic, love and reasons to smile. I love you! 💜</p></div>
+        <div class="surprise-note"><span>✧ A tiny note from your universe</span><p class="surprise-text"></p></div>
+      </section>
+
+      <footer class="journey-step footer-step" data-surprise="This little universe will always have your name written among its stars.">
+        <div class="footer-hearts">♡　✧　♡</div><h2>Keep shining, <em>Akka.</em></h2><p>Today, tomorrow and always. Happy Birthday! 🎂</p>
+        <p class="footer-signoff">Made with all my love, by your little sister.</p><button type="button" class="back-to-top" id="topButton">Back to the magic ↑</button>
+        <div class="surprise-note"><span>✧ One last little note</span><p class="surprise-text"></p></div>
+      </footer>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
